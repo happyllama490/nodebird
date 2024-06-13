@@ -1,6 +1,6 @@
 const express = require('express'); // express 모듈을 불러와서 라우터 객체를 생성
 // 각 페이지를 렌더링하는 컨트롤러 함수들을 불러옴
-const { renderProfile, renderJoin, rednerMain } = require('../controllers/page');
+const { renderProfile, renderJoin, renderMain } = require('../controllers/page');
 
 const router = express.Router(); // express 라우터 객체 생성
 
@@ -18,6 +18,6 @@ router.get('/profile', renderProfile);
 // '/join' 경로로 GET 요청이 들어오면 renderJoin 컨트롤러 실행
 router.get('/join', renderJoin);
 // 루트 경로('/')로 GET 요청이 들어오면 renderMain 컨트롤러를 실행
-router.get('/', rednerMain);
+router.get('/', renderMain);
 
 module.exports = router; // 라우터 객체를 모듈로 내보냄
