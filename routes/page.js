@@ -9,10 +9,15 @@ const router = express.Router(); // express 라우터 객체 생성
 
 // 모든 요청에 대해 공통적으로 수행할 작업을 정의하는 미들웨어 추가
 router.use((req, res, next) => {
-    res.locals.user = req.user; // 사용자 정보 초기화
-    res.locals.followerCount = 0; // 팔로워 수 초기화
-    res.locals.followingCount = 0; // 팔로잉 수 초기화
-    res.locals.followingIdList = []; // 팔로잉 ID 리스트 초기화
+    // 사용자 정보를 로컬 변수에 설정
+    res.locals.user = req.user;
+    // 사용자의 팔로워 수를 가져와 로컬 변수에 저장, 없으면 0으로 초기화
+    res.locals.followerCount = req.user?.Followers?.length || 0;
+    // 사용자의 팔로잉 수를 가져와 로컬 변수에 저장, 없으면 0으로 초기화
+    res.locals.followingCount = req.user?.Followings?.length || 0;
+    // 사용자가 팔로잉 목록에서 각 팔로잉의 ID를 추출하여 배열로 저장
+    // 사용자가 팔로잉이 없거나, req,user가 정의되지 않은 경우에는 빈 배열로 초기화
+    res.locals.followingIdList = req.user?.Followings?.map(f => f.id) || [];
     next(); // 다음 미들웨어 또는 라우터로 제어를 전달
 });
 
