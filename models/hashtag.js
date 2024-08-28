@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize'); // Sequelize 모듈
 
 class Hashtag extends Sequelize.Model { // Hashtag 모델을 정의하는 클래스
-    static initate(sequelize) { // 모델을 초기화하는 정적 메서드, 매개변수: sequelize 인스턴스
+    static initiate(sequelize) { // 모델을 초기화하는 정적 메서드, 매개변수: sequelize 인스턴스
         Hashtag.init({
             title: { // title 필드
                 type: Sequelize.STRING(15), // 최대 15글자의 문자열 타입

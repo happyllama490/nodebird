@@ -20,9 +20,9 @@ db.User = User; // User 모델을 db 객체에 추가
 db.Post = Post; // Post 모델을 db 객체에 추가
 db.Hashtag = Hashtag; // Hashtag 모델을 db 객체에 추가
 
-User.initate(sequelize); // User 모델 초기화
-Post.initate(sequelize); // Post 모델 초기화
-Hashtag.initate(sequelize); // Hashtag 모델 초기화
+User.initiate(sequelize); // User 모델 초기화
+Post.initiate(sequelize); // Post 모델 초기화
+Hashtag.initiate(sequelize); // Hashtag 모델 초기화
 
 User.associate(db); // User 모델의 연관 관계 설정
 Post.associate(db); // Post 모델의 연관 관계 설정
@@ -43,7 +43,7 @@ fs
         const model = require(path.join(__dirname, file)); // 모델 파일을 불러오기
         console.log(file, model.name); // 파일 이름과 모델 이름 출력
         db[model.name] = model; // 모델을 db객체에 추가
-        model.initate(sequelize); // 모델 초기화    
+        model.initiate(sequelize); // 모델 초기화    
     });
 
 Object.keys(db).forEach(modelName => { // 모델의 연관관계 설정
